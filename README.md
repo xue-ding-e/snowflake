@@ -1,6 +1,6 @@
 snowflake
 ====
-[![GoDoc](https://godoc.org/github.com/bwmarrin/snowflake?status.svg)](https://godoc.org/github.com/bwmarrin/snowflake) [![Go report](http://goreportcard.com/badge/bwmarrin/snowflake)](http://goreportcard.com/report/bwmarrin/snowflake) [![Coverage](http://gocover.io/_badge/github.com/bwmarrin/snowflake)](https://gocover.io/github.com/bwmarrin/snowflake) [![Build Status](https://travis-ci.org/bwmarrin/snowflake.svg?branch=master)](https://travis-ci.org/bwmarrin/snowflake) [![Discord Gophers](https://img.shields.io/badge/Discord%20Gophers-%23info-blue.svg)](https://discord.gg/0f1SbxBZjYq9jLBk)
+[![GoDoc](https://godoc.org/github.com/xue-ding-e/snowflake?status.svg)](https://godoc.org/github.com/xue-ding-e/snowflake) [![Go report](http://goreportcard.com/badge/xue-ding-e/snowflake)](http://goreportcard.com/report/xue-ding-e/snowflake) [![Coverage](http://gocover.io/_badge/github.com/xue-ding-e/snowflake)](https://gocover.io/github.com/xue-ding-e/snowflake) [![Build Status](https://travis-ci.org/xue-ding-e/snowflake.svg?branch=master)](https://travis-ci.org/xue-ding-e/snowflake) [![Discord Gophers](https://img.shields.io/badge/Discord%20Gophers-%23info-blue.svg)](https://discord.gg/0f1SbxBZjYq9jLBk)
 
 snowflake is a [Go](https://golang.org/) package that provides
 * A very simple Twitter snowflake generator.
@@ -61,7 +61,7 @@ This assumes you already have a working Go environment, if not please see
 [this page](https://golang.org/doc/install) first.
 
 ```sh
-go get github.com/bwmarrin/snowflake
+go get github.com/xue-ding-e/snowflake
 ```
 
 
@@ -86,7 +86,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/bwmarrin/snowflake"
+	"github.com/xue-ding-e/snowflake"
 )
 
 func main() {
@@ -140,4 +140,4 @@ go test -run=^$ -bench=.
 
 If your curious, check out this commit that shows benchmarks that compare a few 
 different ways of implementing a snowflake generator in Go.
-*  https://github.com/bwmarrin/snowflake/tree/9befef8908df13f4102ed21f42b083dd862b5036
+*  https://github.com/xue-ding-e/snowflake/tree/9befef8908df13f4102ed21f42b083dd862b5036

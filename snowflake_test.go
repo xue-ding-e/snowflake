@@ -70,7 +70,7 @@ func TestPrintAll(t *testing.T) {
 
 	id := node.Generate()
 
-	t.Logf("Int64    : %#v", id.Int64())
+	t.Logf("Uint64    : %#v", id.Uint64())
 	t.Logf("String   : %#v", id.String())
 	t.Logf("Base2    : %#v", id.Base2())
 	t.Logf("Base32   : %#v", id.Base32())
@@ -82,24 +82,24 @@ func TestPrintAll(t *testing.T) {
 
 }
 
-func TestInt64(t *testing.T) {
+func TestUint64(t *testing.T) {
 	node, err := NewNode(0)
 	if err != nil {
 		t.Fatalf("error creating NewNode, %s", err)
 	}
 
 	oID := node.Generate()
-	i := oID.Int64()
+	i := oID.Uint64()
 
-	pID := ParseInt64(i)
+	pID := ParseUint64(i)
 	if pID != oID {
 		t.Fatalf("pID %v != oID %v", pID, oID)
 	}
 
-	mi := int64(1116766490855473152)
-	pID = ParseInt64(mi)
-	if pID.Int64() != mi {
-		t.Fatalf("pID %v != mi %v", pID.Int64(), mi)
+	mi := uint64(1116766490855473152)
+	pID = ParseUint64(mi)
+	if pID.Uint64() != mi {
+		t.Fatalf("pID %v != mi %v", pID.Uint64(), mi)
 	}
 
 }
@@ -312,10 +312,10 @@ func TestIntBytes(t *testing.T) {
 	}
 
 	ms := [8]uint8{0xf, 0x7f, 0xc0, 0xfc, 0x2f, 0x80, 0x0, 0x0}
-	mi := int64(1116823421972381696)
+	mi := uint64(1116823421972381696)
 	pID = ParseIntBytes(ms)
-	if pID.Int64() != mi {
-		t.Fatalf("pID %v != mi %v", pID.Int64(), mi)
+	if pID.Uint64() != mi {
+		t.Fatalf("pID %v != mi %v", pID.Uint64(), mi)
 	}
 
 }
@@ -491,25 +491,25 @@ func TestParseBase32(t *testing.T) {
 		{
 			name:    "capital case is invalid encoding",
 			arg:     "B8WJM1ZROYYYY",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 		{
 			name:    "l is not allowed",
 			arg:     "b8wjm1zroyyyl",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 		{
 			name:    "v is not allowed",
 			arg:     "b8wjm1zroyyyv",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 		{
 			name:    "2 is not allowed",
 			arg:     "b8wjm1zroyyy2",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 	}
@@ -543,25 +543,25 @@ func TestParseBase58(t *testing.T) {
 		{
 			name:    "0 not allowed",
 			arg:     "0jgmnx8Js8A",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 		{
 			name:    "I not allowed",
 			arg:     "Ijgmnx8Js8A",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 		{
 			name:    "O not allowed",
 			arg:     "Ojgmnx8Js8A",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 		{
 			name:    "l not allowed",
 			arg:     "ljgmnx8Js8A",
-			want:    -1,
+			want:    0,
 			wantErr: true,
 		},
 	}

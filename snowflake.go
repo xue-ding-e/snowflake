@@ -93,7 +93,7 @@ type Node struct {
 
 // An ID is a custom type used for a snowflake ID.  This is used so we can
 // attach methods onto the ID.
-type ID int64
+type ID uint64
 
 // NewNode returns a new snowflake node that can be used to generate snowflake
 // IDs
@@ -165,12 +165,12 @@ func (n *Node) Generate() ID {
 }
 
 // Int64 returns an int64 of the snowflake ID
-func (f ID) Int64() int64 {
-	return int64(f)
+func (f ID) Uint64() uint64 {
+	return uint64(f)
 }
 
 // ParseInt64 converts an int64 into a snowflake ID
-func ParseInt64(id int64) ID {
+func ParseUint64(id uint64) ID {
 	return ID(id)
 }
 
@@ -230,7 +230,7 @@ func ParseBase32(b []byte) (ID, error) {
 
 	for i := range b {
 		if decodeBase32Map[b[i]] == 0xFF {
-			return -1, ErrInvalidBase32
+			return 0, ErrInvalidBase32
 		}
 		id = id*32 + int64(decodeBase32Map[b[i]])
 	}
@@ -277,7 +277,7 @@ func ParseBase58(b []byte) (ID, error) {
 
 	for i := range b {
 		if decodeBase58Map[b[i]] == 0xFF {
-			return -1, ErrInvalidBase58
+			return 0, ErrInvalidBase58
 		}
 		id = id*58 + int64(decodeBase58Map[b[i]])
 	}
@@ -294,7 +294,7 @@ func (f ID) Base64() string {
 func ParseBase64(id string) (ID, error) {
 	b, err := base64.StdEncoding.DecodeString(id)
 	if err != nil {
-		return -1, err
+		return 0, err
 	}
 	return ParseBytes(b)
 
@@ -322,7 +322,7 @@ func (f ID) IntBytes() [8]byte {
 // ParseIntBytes converts an array of bytes encoded as big endian integer as
 // a snowflake ID
 func ParseIntBytes(id [8]byte) ID {
-	return ID(int64(binary.BigEndian.Uint64(id[:])))
+	return ID(binary.BigEndian.Uint64(id[:]))
 }
 
 // Time returns an int64 unix timestamp in milliseconds of the snowflake ID time
